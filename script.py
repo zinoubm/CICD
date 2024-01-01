@@ -26,7 +26,7 @@ class AwsBatch():
                                    region_name=AWS_REGION)
         
 
-    def run(self, job_name='test_job', worker_file_path='woker.py', payload={"user_id":"1", 
+    def run(self, job_name='test_job', worker_file_path='worker.py', payload={"user_id":"1", 
                                                                              "document_id":"1", 
                                                                              "s3_document_path":"doc-1.pdf"}):
         try:
@@ -35,12 +35,12 @@ class AwsBatch():
             jobQueue=self.job_queue,
             jobDefinition=self.job_definition,
             containerOverrides={
-                # "command":[
-                #     "python",
-                #     worker_file_path,
-                #     json.dumps(payload)
-                # ]
-                "command":["echo", "test"]
+                "command":[
+                    "python",
+                    worker_file_path,
+                    json.dumps(payload)
+                ]
+                # "command":["echo", "test"]
             }
         )
                         
