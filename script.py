@@ -14,10 +14,7 @@ AWS_SECRET_KEY = os.getenv("AWS_SECRET_KEY", None)
 AWS_REGION = os.getenv("AWS_REGION", None)
 JOB_QUEUE = os.getenv("JOB_QUEUE")
 JOB_DEFINITION = os.getenv("JOB_DEFINITION")
-# class AwsBatchSettings(object):
-#     def __init__(self) -> None:
-#         self.job_queue = os.getenv("JOB_QUEUE")
-#         self.job_definition = os.getenv("JOB_DEFINITION")
+
 
 class AwsBatch():
     def __init__(self) -> None:
@@ -28,7 +25,6 @@ class AwsBatch():
                                    aws_secret_access_key=AWS_SECRET_KEY,
                                    region_name=AWS_REGION)
         
-        # super().__init__(self)
 
     def run(self, job_name='test_job', worker_file_path='woker.py', payload={"user_id":"1", 
                                                                              "document_id":"1", 
@@ -46,9 +42,7 @@ class AwsBatch():
                 ]
             }
         )
-            
-            # response = json.dumps(payload)
-            
+                        
         except Exception as e:
             return {"status":0, "error":e}
 
@@ -56,9 +50,6 @@ class AwsBatch():
     
 
 if __name__ == "__main__":
-    # print(AWS_ACCESS_KEY)
-    # print(JOB_QUEUE)
-    # print(JOB_DEFINITION)
     my_batch = AwsBatch()
     res = my_batch.run(job_name="first_run")
     print(res)
