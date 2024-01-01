@@ -1,12 +1,14 @@
-FROM node:latest
+FROM python:3.6.10-alpine
 
-WORKDIR /usr/src/app
+# Install python and any other necessary dependencies
+# awscli is necessary for the run_job.sh script to access S3 resources
+RUN pip3 install awscli;
 
-COPY package.json ./
+# Alpine image doesn't automatically come with bash
+RUN apk add --no-cache --upgrade bash
 
-RUN npm install
+# Copy the local folder to the Docker image
+COPY ./ /usr/local/aws_batch_tutorial
 
-COPY . .
-
-EXPOSE 4000
-CMD [ "node", "index.js" ]
+# Set the working directory to the newly created folder
+WORKDIR /usr/local/aws_batch_tutorial
