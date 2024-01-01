@@ -121,7 +121,7 @@ resource "aws_batch_job_definition" "batch" {
     "FARGATE",
   ]
   container_properties = jsonencode({
-    # command = ["echo", "test"]
+    command = ["echo", "test"]
     image   = "zinoubm/batch"
     # image = "busybox"
 

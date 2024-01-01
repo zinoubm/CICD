@@ -35,11 +35,12 @@ class AwsBatch():
             jobQueue=self.job_queue,
             jobDefinition=self.job_definition,
             containerOverrides={
-                "command":[
-                    "python",
-                    worker_file_path,
-                    json.dumps(payload)
-                ]
+                # "command":[
+                #     "python",
+                #     worker_file_path,
+                #     json.dumps(payload)
+                # ]
+                "command":["echo", "test"]
             }
         )
                         
