@@ -1,4 +1,4 @@
-FROM python:3.6.10-alpine
+FROM python:3
 
 # Install python and any other necessary dependencies
 # awscli is necessary for the run_job.sh script to access S3 resources
