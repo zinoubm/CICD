@@ -9,8 +9,8 @@ terraform {
 
 provider "aws" {
     region = "us-east-2"
-    access_key = "AKIAZ7ADEQN2FPQXGWRW"
-    secret_key = "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"
+    access_key = var.AWS_ACCESS_KEY_ID
+    secret_key = var.AWS_SECRET_ACCESS_KEY
 }
 
 # Retrieves the default vpc for this region
@@ -121,8 +121,9 @@ resource "aws_batch_job_definition" "batch" {
     "FARGATE",
   ]
   container_properties = jsonencode({
-    command = ["echo", "test"]
-    image   = "busybox"
+    # command = ["echo", "test"]
+    image   = "zinoubm/batch"
+    # image = "busybox"
 
     fargatePlatformConfiguration = {
       platformVersion = "LATEST"

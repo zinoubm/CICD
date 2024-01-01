@@ -5,7 +5,7 @@ FROM python:3
 RUN pip3 install awscli;
 
 # Alpine image doesn't automatically come with bash
-RUN apk add --no-cache --upgrade bash
+# RUN apk add --no-cache --upgrade bash
 
 # Copy the local folder to the Docker image
 COPY ./ /usr/local/aws_batch_tutorial
