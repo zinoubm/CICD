@@ -38,8 +38,8 @@ class AwsBatch():
                 "command":[
                     "python",
                     worker_file_path,
-                    json.dumps(payload)
-                ]
+                    # " ".join([f"--{key} {value}" for key, value in payload.items()])
+                ] + [f"--{key} {value}" for key, value in payload.items()]
                 # "command":["echo", "test"]
             }
         )
@@ -51,6 +51,15 @@ class AwsBatch():
     
 
 if __name__ == "__main__":
-    my_batch = AwsBatch()
-    res = my_batch.run(job_name="first_run")
-    print(res)
+    # my_batch = AwsBatch()
+    # res = my_batch.run(job_name="first_run")
+    # print(res)
+
+    payload={"user_id":"1", 
+            "document_id":"1", 
+            "s3_document_path":"doc-1.pdf"}
+    
+    print(" ".join([f"--{key} {value}" for key, value in payload.items()]))
+
+
+    # 4b3e8d02-1ade-4aa3-b8ba-2f2dec1c1dde

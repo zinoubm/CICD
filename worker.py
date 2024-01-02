@@ -8,7 +8,7 @@ def parse_arg():
 
     parser.add_argument("--user_id", type=int, default=1)
     parser.add_argument("--document_id", type=int, default=2)
-    parser.add_argument("--s3_document_path", type=str,required=True)
+    parser.add_argument("--s3_document_path", type=str, default="doc-1.pdf")
 
     params = vars(parser.parse_args())
 
